@@ -15,15 +15,22 @@ def print_string(string_to_print):
 
 @app.route('/count/<int:my_number>')
 def count(my_number):
-    mystr = ''
+    count = f''
     for i in range(my_number):
-        mystr.append(f'{i}\n')
-    return mystr
+        count += (f'{i}\n')
+    return count
 
 
 @app.route('/math/<int:num1>/<operation>/<int:num2>')
 def math(num1, operation, num2):
-    return num1, operation, num2
+    if operation == '+':
+        return num1 + num2
+    elif operation == '-':
+        return num1 - num2
+    elif operation == '*':
+        return num1 * num2
+    elif operation == 'div':
+        return num1 / num2
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
